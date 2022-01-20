@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    private GameObject cameraPos;
+    [SerializeField] private GameObject cameraPos;
+    private GameObject mainCamera;
     private float timer;
+    private GameObject Player;
+    [SerializeField] private float speed = 10;
     void Start()
     {
-        cameraPos = GameObject.FindGameObjectWithTag("CameraPos");
+        mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
     }
-
-    // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-        if(timer >= 0.1)
+        if (gameObject.transform.position != cameraPos.transform.position)
         {
-            gameObject.transform.position = Vector3.Lerp(transform.position, cameraPos.transform.position, Time.deltaTime);
-            timer = 0;
+            gameObject.transform.position = Vector3.Lerp(transform.position, cameraPos.transform.position, Time.deltaTime * speed);
         }
     }
 }
