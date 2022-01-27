@@ -49,7 +49,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 927300076015034450}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -109,4 +109,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd627bc076498640987ad10cddb7d4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpBoost: 600

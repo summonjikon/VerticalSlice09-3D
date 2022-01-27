@@ -10,6 +10,8 @@ public class MovementPlayer : MonoBehaviour
     public float gravityAmount = -9.81f;
     public float jumpBoost = 600f;
     private float _playerMoveSpeed = 2.0f;
+    private bool justBoosted;
+    private float boostTimer;
     RaycastHit hit;
     public LayerMask layerMask;
 
@@ -23,7 +25,15 @@ public class MovementPlayer : MonoBehaviour
         playerSpeed.y += gravityAmount * Time.deltaTime;
         controllerP.Move(playerSpeed * Time.deltaTime);
 
-
+        if(justBoosted == true)
+        {
+            boostTimer += Time.deltaTime;
+            if(boostTimer >= 2f)
+            {
+                boostTimer = 0;
+                justBoosted = false;
+            }
+        }
         RaycastHit hit;
         if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.265f, layerMask))
         {
@@ -50,6 +60,14 @@ public class MovementPlayer : MonoBehaviour
 
     public void BoostBoi()
     {
-        playerSpeed.y += Mathf.Sqrt(jumpBoost * -1.0f * gravityAmount);
+        if(justBoosted == false)
+        {
+            playerSpeed.y += Mathf.Sqrt(jumpBoost * -1.0f * gravityAmount);
+            justBoosted = true;
+        }
+        else
+        {
+            return;
+        }
     }
 }
