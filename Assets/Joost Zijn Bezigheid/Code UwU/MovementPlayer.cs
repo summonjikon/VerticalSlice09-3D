@@ -9,7 +9,7 @@ public class MovementPlayer : MonoBehaviour
     public bool groundedPlayer = true;
     public float gravityAmount = -9.81f;
     public float jumpBoost = 600f;
-    private float _playerMoveSpeed = 2.0f;
+    private float _playerMoveSpeed = 4.0f;
     private bool justBoosted;
     private float boostTimer;
     RaycastHit hit;
@@ -28,14 +28,14 @@ public class MovementPlayer : MonoBehaviour
         if(justBoosted == true)
         {
             boostTimer += Time.deltaTime;
-            if(boostTimer >= 2f)
+            if(boostTimer >= 1f)
             {
                 boostTimer = 0;
                 justBoosted = false;
             }
         }
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.265f, layerMask))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 0.6f, layerMask))
         {
             groundedPlayer = true;
         }
