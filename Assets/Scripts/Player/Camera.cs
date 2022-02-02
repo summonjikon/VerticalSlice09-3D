@@ -15,7 +15,8 @@ public class Camera : MonoBehaviour
     }
     void Update()
     {
-        if (gameObject.transform.position != cameraPos.transform.position)
+        float distance = Vector3.Distance(gameObject.transform.position, cameraPos.transform.position);
+        if (gameObject.transform.position != cameraPos.transform.position && distance >= 0.1)
         {
             gameObject.transform.position = Vector3.Lerp(transform.position, cameraPos.transform.position, Time.deltaTime * speed);
         }
