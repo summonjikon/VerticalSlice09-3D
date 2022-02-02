@@ -14,11 +14,7 @@ public class JumpPad : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("test");
-        if(collision.gameObject.GetComponent<MovementPlayer>() != null)
-        {
-            Player.transform.GetComponent<MovementPlayer>().BoostBoi();
-            animator.SetTrigger("jump");
-        }
+        Player.transform.GetComponent<MovementPlayer>().BoostBoi();
+        animator.SetTrigger("jump");
     }
 }
